@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:icontactapp/pages/addcontact_page.dart';
 import 'package:icontactapp/pages/contact_page.dart';
 import 'package:icontactapp/pages/home_page.dart';
+import 'package:icontactapp/pages/individual_contact.dart';
 import 'package:icontactapp/pages/keypad_page.dart';
 
 void main() {
