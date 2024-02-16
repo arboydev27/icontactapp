@@ -15,6 +15,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
+
+
 
   // this keeps track of the current pageto display
   int _selectedIndex = 0;
@@ -67,75 +70,6 @@ class _HomePageState extends State<HomePage> {
       ),
 
       body: _pages[_selectedIndex],
-      /*
-      body: Column(
-        children: [
-          Center(
-
-            // In order to stack the widgets on top of each other, we have to use a Stack
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Container(
-                  height: 100,
-                  width: 380,
-                  decoration: BoxDecoration(
-                    color: Colors.purple[200],
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                                ),
-                ),
-              
-              Padding(
-                padding: EdgeInsets.all(18),
-
-                // To put the display photo next to the user contact name and "my contact cardd" we use a Row wdiget
-                child: Row(
-                  children:[ 
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('lib/images/Stewie.jpg'),
-                                        ),
-                    ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:[
-                      Text("Stewie", 
-                      style: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
-                      ),
-                  
-                      Text("My contact card", 
-                      style: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                      ),
-                    ]
-                  ),
-                  ]
-                ),
-              ),
-
-              ], 
-            ),
-          ),
-
-          Expanded(
-            child: Container(
-              color: Colors.white,
-              child: ListView.builder(
-                itemCount: contacts.length,
-                itemBuilder: (context, index) => ListTile(
-                  title: Text(contacts[index], style: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),),
-                ),
-                ),
-            ),
-          ),
-
-        ],
-      ),
-      */
 
     );
   }

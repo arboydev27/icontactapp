@@ -2,28 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icontactapp/pages/addcontact_page.dart';
+import 'package:icontactapp/pages/individual_contact.dart';
+
+
 
 class ContactPage extends StatelessWidget {
-  ContactPage({super.key});
 
-    List contacts = [
-    "Peter Griffin",
-    "Lois Griffin",
-    "Brian Griffin",
-    "Chris Griffin",
-    "Meg Griffin",
-    "Glenn Quagmire",
-    "Rupert",
-    "Donna Tubbs-Brown",
-    "Cleveland Brown",
-    "Rallo Tubbs",
-    "Tom Tucker",
-    "Diane Simmons",
-    "Tricia Takanawa",
-    "Jake Tucker",
-    "Carter Pewterschmidt",
-    "Death",
-  ];
+  const ContactPage({
+    super.key,
+    });
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +75,30 @@ class ContactPage extends StatelessWidget {
               color: Colors.white,
               child: ListView.builder(
                 itemCount: contacts.length,
-                itemBuilder: (context, index) => ListTile(
-                  title: Text(contacts[index], style: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),),
-                ),
-                ),
-            ),
+                itemBuilder: (context, index) {
+                  final contact = contacts[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (context) => IndividualContactPage(contact: contact,),
+                        ),
+                        );
+                    },
+                    child: ListTile(
+                      title: Text(
+                        contact.name,
+                        style: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
+                          ),
+                          ),
+                  );
+                }
           ),
 
-        ],
+            ),
       ),
-      );
+        ]
+      )
+    );
   }
 }

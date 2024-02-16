@@ -1,11 +1,20 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last, unnecessary_string_interpolations, use_key_in_widget_constructors, duplicate_ignore, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icontactapp/contact_classes/Contact.dart';
 
 class IndividualContactPage extends StatelessWidget {
-  const IndividualContactPage({super.key});
+  // We have to parse the contact object
+  final Contact contact;
+
+  // ignore: use_key_in_widget_constructors
+  // IndividualContactPage constructor with contact as a parameter
+  const IndividualContactPage({
+    required this.contact,
+    });
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +57,13 @@ class IndividualContactPage extends StatelessWidget {
                       // User name place
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: Text("Username", 
+                        child: Text('${contact.name}', 
                         style: GoogleFonts.poppins(fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                       ),
             
                       // Position + Company
-                      Text("Position and Company", 
+                      Text('${contact.positionAndCompany}', 
                         style: GoogleFonts.poppins(fontSize: 16),
                         ),
             
@@ -81,45 +90,38 @@ class IndividualContactPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 50), // Brings down the buttons a bit down inside the UI
+                      padding: const EdgeInsets.only(top: 10), // Brings down the buttons a bit down inside the UI
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween, // This puts space between the two buttons
                         children: [
                 
-                          // Cancel button
-                          /*
+                          // Go back button
+                          
                           Container(
                             width: 88,
+                            height: 30,
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }, 
+                              icon: Icon(Icons.arrow_back_ios)),
+                          ),
+                          
+                      
+                          
+                          // Edit button
+                          Container(
+                            width: 69,
                             height: 30,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.purple[900],
                               ),
                               onPressed: () {}, 
-                              child: Text("Cancel",
+                              child: Text("Edit",
                               style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 11, color: Colors.white)),
                               ),
                               ),
-                          ),
-                          */
-                      
-                          
-                          // Done button
-                          Padding(
-                            padding: const EdgeInsets.only(left: 300),
-                            child: Container(
-                              width: 69,
-                              height: 30,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.purple[900],
-                                ),
-                                onPressed: () {}, 
-                                child: Text("Edit",
-                                style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 11, color: Colors.white)),
-                                ),
-                                ),
-                            ),
                           ),
                         ],
                       ),
@@ -136,7 +138,7 @@ class IndividualContactPage extends StatelessWidget {
             Stack(
               children: [ 
                 Container(
-                height: 420,
+                height: 450,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
                   color: Colors.purple.shade900,
@@ -159,7 +161,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Mobile", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text("+1 1234 92738", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text('${contact.number}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -176,7 +178,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Email", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text("peterGriffin@gmail.com", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text('${contact.email}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -193,7 +195,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Website", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text("peterGriffin@gmail.com", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text('${contact.website}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -210,7 +212,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Address", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text("House 153, Quahog, Rhode Island, New York", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text("${contact.address}", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
