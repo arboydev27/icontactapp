@@ -1,20 +1,33 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last, unnecessary_string_interpolations, use_key_in_widget_constructors, duplicate_ignore, sized_box_for_whitespace
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last, unnecessary_string_interpolations, use_key_in_widget_constructors, duplicate_ignore, sized_box_for_whitespace, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:icontactapp/contact_classes/Contact.dart';
 
-class IndividualContactPage extends StatelessWidget {
+class IndividualContactPage extends StatefulWidget {
   // We have to parse the contact object
   final Contact contact;
+  final ValueNotifier<int> contactChangeNotifier;
 
   // ignore: use_key_in_widget_constructors
   // IndividualContactPage constructor with contact as a parameter
-  const IndividualContactPage({
+  IndividualContactPage({
     required this.contact,
+    required this.contactChangeNotifier,
     });
 
+  @override
+  State<IndividualContactPage> createState() => _IndividualContactPageState();
+}
+
+class _IndividualContactPageState extends State<IndividualContactPage> {
+
+  void removeContact(Contact contact) {
+  final contactsBox = Hive.box<Contact>('contacts');
+  contactsBox.delete(contact.key);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +46,7 @@ class IndividualContactPage extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.purple.shade700,
+                      Color(0xCC6F12E7),
                       Colors.white,
                     ]
                   ),
@@ -57,13 +70,13 @@ class IndividualContactPage extends StatelessWidget {
                       // User name place
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: Text('${contact.name}', 
+                        child: Text('${widget.contact.name}', 
                         style: GoogleFonts.poppins(fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                       ),
             
                       // Position + Company
-                      Text('${contact.positionAndCompany}', 
+                      Text('${widget.contact.positionAndCompany}', 
                         style: GoogleFonts.poppins(fontSize: 16),
                         ),
             
@@ -96,7 +109,6 @@ class IndividualContactPage extends StatelessWidget {
                         children: [
                 
                           // Go back button
-                          
                           Container(
                             width: 88,
                             height: 30,
@@ -112,11 +124,16 @@ class IndividualContactPage extends StatelessWidget {
                           // Edit button
                           Container(
                             width: 69,
-                            height: 30,
+                            height: 20,
                             child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.purple[900],
+                              style: ButtonStyle(
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF2D0C57)),
+                          ),
                               onPressed: () {}, 
                               child: Text("Edit",
                               style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 11, color: Colors.white)),
@@ -141,7 +158,7 @@ class IndividualContactPage extends StatelessWidget {
                 height: 450,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
-                  color: Colors.purple.shade900,
+                  color: Color(0xFF2D0C57),
                 ),
               ),
 
@@ -161,7 +178,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Mobile", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text('${contact.number}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text('${widget.contact.number}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -178,7 +195,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Email", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text('${contact.email}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text('${widget.contact.email}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -195,7 +212,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Website", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text('${contact.website}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text('${widget.contact.website}', style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -212,7 +229,7 @@ class IndividualContactPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Address", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
-                            Text("${contact.address}", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
+                            Text("${widget.contact.address}", style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),),
                           ],
                         ),
                       ],
@@ -226,7 +243,13 @@ class IndividualContactPage extends StatelessWidget {
                         height: 30,
                         width: 138,
                         child: ElevatedButton(
-                          onPressed: () {}, 
+                          onPressed: () {
+                            removeContact(widget.contact);
+                            final contactsBox = Hive.box<Contact>('contacts');
+                            contactsBox.delete(widget.contact.key);
+                            Navigator.pop(context);
+                            widget.contactChangeNotifier.value++;
+                          }, 
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(

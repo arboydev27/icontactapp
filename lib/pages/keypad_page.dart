@@ -38,7 +38,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -54,7 +54,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -69,7 +69,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -84,7 +84,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -99,7 +99,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -114,7 +114,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -129,7 +129,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -144,7 +144,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -159,7 +159,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -174,7 +174,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -189,7 +189,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {
@@ -209,7 +209,7 @@ class _KeypadPageState extends State<KeypadPage> {
                   return GridTile(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple[900],
+                        primary: Color(0xFF2D0C57),
                       ),
                       onPressed: () {
                         setState(() {

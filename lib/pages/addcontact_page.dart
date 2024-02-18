@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:icontactapp/contact_classes/Contact.dart';
 
 List<Contact> contacts = [];
@@ -42,7 +43,8 @@ class _AddContactPageState extends State<AddContactPage> {
   );
   
   // It add the contact to the List of Contacts
-  contacts.add(contact);
+  final contactsBox = Hive.box<Contact>('contacts');
+  contactsBox.add(contact);
 
   _nameController.clear();
   _numberController.clear();
@@ -86,7 +88,7 @@ class _AddContactPageState extends State<AddContactPage> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.purple.shade700,
+                        Color(0xCC6F12E7),
                         Colors.white,
                       ]
                     ),
@@ -106,7 +108,7 @@ class _AddContactPageState extends State<AddContactPage> {
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.purple[900],
+                            primary: Color(0xFF2D0C57),
                           ),
                           onPressed: () {}, 
                           child: Text("Add Photo",
@@ -131,11 +133,16 @@ class _AddContactPageState extends State<AddContactPage> {
                             // Cancel button
                             Container(
                               width: 88,
-                              height: 30,
+                              height: 20,
                               child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.purple[900],
-                                ),
+                                style: ButtonStyle(
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF2D0C57)),
+                          ),
                                 onPressed: () {}, 
                                 child: Text("Cancel",
                                 style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 11, color: Colors.white)),
@@ -147,11 +154,16 @@ class _AddContactPageState extends State<AddContactPage> {
                             // Done button
                             Container(
                               width: 78,
-                              height: 30,
+                              height: 20,
                               child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.purple[900],
-                                ),
+                                 style: ButtonStyle(
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF2D0C57)),
+                          ),
                                 onPressed: addContact, 
                                 child: Text("Done",
                                 style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 11, color: Colors.white)),
@@ -177,7 +189,7 @@ class _AddContactPageState extends State<AddContactPage> {
                   height: 450,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
-                    color: Colors.purple.shade900,
+                    color: Color(0xFF2D0C57),
                   ),
                 ),
               

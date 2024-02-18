@@ -1,12 +1,27 @@
+import 'package:hive/hive.dart';
 
+part 'Contact.g.dart'; // Name of the generated TypeAdapter
 
-class Contact {
-  final String name;
-  final String number;
-  final String positionAndCompany;
-  final String email;
-  final String website;
-  final String address;
+@HiveType(typeId: 0)
+class Contact extends HiveObject {
+
+  @HiveField(0)
+  String name;
+  
+  @HiveField(1)
+  String number;
+
+  @HiveField(2)
+  String positionAndCompany;
+
+  @HiveField(3)
+  String email;
+
+  @HiveField(4)
+  String website;
+
+  @HiveField(5)
+  String address;
 
   Contact({
     required this.name,
